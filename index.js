@@ -1,20 +1,20 @@
 const fetch = require("./fetch");
 
-if (!process.env.GITHUB_TOKEN) {
-  console.error("🔴 no GITHUB_TOKEN found. pass `GITHUB_TOKEN` as env");
+if (!process.env.TOKEN) {
+  console.error("🔴 no TOKEN found. pass `TOKEN` as env");
   process.exitCode = 1;
   return;
 }
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const TOKEN = process.env.TOKEN;
 
 let owner, repo;
 
 if (process.env.INPUT_REPO) {
   [owner, repo] = process.env.INPUT_REPO.split("/");
-} else if (process.env.GITHUB_REPOSITORY) {
-  [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
+} else if (process.env.REPOSITORY) {
+  [owner, repo] = process.env.REPOSITORY.split("/");
 } else {
-  console.error("🔴 no GITHUB_REPOSITORY found. pass `GITHUB_REPOSITORY` as env or owner/repo as inputs");
+  console.error("🔴 no REPOSITORY found. pass `REPOSITORY` as env or owner/repo as inputs");
   process.exitCode = 1;
   return;
 }
@@ -30,10 +30,10 @@ const tagName = process.env.INPUT_TAG_NAME;
 const shouldDeleteRelease = process.env.INPUT_DELETE_RELEASE === "true";
 
 const commonOpts = {
-  host: "git.rimmyscorner.com/api/v1",
+  host: "api.github.com",
   port: 443,
   protocol: "https:",
-  auth: `user:${GITHUB_TOKEN}`,
+  auth: `user:${TOKEN}`,
   headers: {
     "Content-Type": "application/json",
     "User-Agent": "node.js",

@@ -10,7 +10,7 @@ For example:
       - name: Delete tag
         run: gh release delete $TAG --cleanup-tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
 ```
 
 ---
@@ -24,5 +24,5 @@ Add the following step to your workflow:
     tag_name: v0.1.0 # tag name to delete
     repo: <owner>/<repoName> # target repo (optional). defaults to repo running this action
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    TOKEN: ${{ secrets.TOKEN }}
 ```
