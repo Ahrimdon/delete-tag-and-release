@@ -30,7 +30,7 @@ const tagName = process.env.INPUT_TAG_NAME;
 const shouldDeleteRelease = process.env.INPUT_DELETE_RELEASE === "true";
 
 const commonOpts = {
-  host: "api.github.com",
+  host: "git.rimmyscorner.com/api/v1",
   port: 443,
   protocol: "https:",
   auth: `user:${GITHUB_TOKEN}`,
